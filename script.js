@@ -1,24 +1,31 @@
 "use strict";
+const keyCode = document.querySelector(".key-code");
+const code = document.querySelector(".code");
+const key = document.querySelector(".key");
+const intro = document.querySelector(".intro");
+// Not practical way
 
-const container = document.querySelector(".container");
-const header = document.querySelector("h1");
-const body = document.querySelector("body");
-container.addEventListener("dblclick", function () {
-  if (container.style.backgroundColor !== "pink") {
-    container.style.backgroundColor = "pink";
-    container.style.color = "white";
-  } else if (container.style.backgroundColor === "pink") {
-    container.style.backgroundColor = "white";
-    container.style.color = "black";
-  }
+window.addEventListener("keydown", function (e) {
+  intro.innerHTML = `
+ <div class="container">
+      <div class="card-container">
+        <div class="card">
+          <h3>e.key</h3>
+          <span>${e.key === " " ? " Space " : e.key}</span>
+        </div>
+        <div class="card">
+          <h3>e.keyCode</h3>
+          <span class="key-code"> ${e.keyCode}</span>
+        </div>
+        <div class="card">
+          <h3>e.code</h3>
+          <span class="code">${e.code}</span>
+        </div>
+      </div>
+    </div>
+    `;
 });
 
-header.addEventListener(
-  "click",
-  (e) => (header.textContent = `X: ${e.clientX} Y: ${e.clientY}`)
-);
+/* More Practical Way */
 
-document.querySelector("#deneme").addEventListener("keypress", function (e) {
-  header.textContent = ` ${e.key} `;
-  console.log(" deneme ");
-});
+// I' ll implement a more practical way if I can.
